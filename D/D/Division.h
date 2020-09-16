@@ -1,7 +1,7 @@
 
-int Div(const int &a, const int &b);
+float Div(const float &a, const float &b);
 
-int Div(const int &a, const int &b)
+float Div(const float &a, const float &b)
 {
 	return a / b;
 }

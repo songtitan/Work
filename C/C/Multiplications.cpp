@@ -1,5 +1,5 @@
 #include "Multiplications.h"
-MULTIPLICATIONS_API int Mul(const int &a, const int &b)
+MULTIPLICATIONS_API float Mul(const float &a, const float &b)
 {
 	return a * b;
 }

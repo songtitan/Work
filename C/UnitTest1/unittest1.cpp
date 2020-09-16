@@ -12,7 +12,8 @@ namespace UnitTest1
 		
 		TEST_METHOD(TestMethod1)
 		{
-			int testNum = GetPrivateProfileInt(L"Num", L"num", 0, L"../UnitTest1/test.ini");
+			// TODO:  在此输入测试代码
+			int testNum = GetPrivateProfileInt("Num", "num", 0, "../UnitTest1/test.ini");
 			for (int i = 1; i <= testNum; i++)
 			{
 				char NumStr[10];
@@ -20,16 +21,25 @@ namespace UnitTest1
 				_itoa(i, NumStr, 10);
 				strcat(ExamStr, NumStr);
 
-				WCHAR examName[256];
-				memset(examName, 0, sizeof(examName));
-				MultiByteToWideChar(CP_ACP, 0, ExamStr, strlen(ExamStr) + 1, examName,
-					sizeof(examName) / sizeof(examName[0]));
+				LPSTR a = new char[10];
+				LPSTR b = new char[10];
+				LPSTR value = new char[10];
+				GetPrivateProfileString(ExamStr, "a", "", a, 10, "../UnitTest1/test.ini");
+				GetPrivateProfileString(ExamStr, "b", "", b, 10, "../UnitTest1/test.ini");
+				GetPrivateProfileString(ExamStr, "value", "", value, 10, "../UnitTest1/test.ini");
 
-				int a = GetPrivateProfileInt(examName, L"a", 0, L"../UnitTest1/test.ini");
-				int b = GetPrivateProfileInt(examName, L"b", 0, L"../UnitTest1/test.ini");
-				int value = GetPrivateProfileInt(examName, L"value", 0, L"../UnitTest1/test.ini");
+				std::string str1(a);
+				float fa = atof(str1.c_str());
+				std::string str2(b);
+				float fb = atof(str2.c_str());
+				std::string str3(value);
+				float fvalue = atof(str3.c_str());
+
+				delete[] a;
+				delete[] b;
+				delete[] value;
 				bool fruit = false;
-				if (Mul(a, b) == value)
+				if (Mul(fa, fb) == fvalue)
 				{
 					fruit = true;
 				}

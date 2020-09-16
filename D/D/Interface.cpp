@@ -23,6 +23,5 @@ int main()
 
 	cout << "Div:" << Div(5, 3) << endl;
 
-
 	getchar();
 }
